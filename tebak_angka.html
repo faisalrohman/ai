@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>TEBAK SIAPA AKU</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f8ff;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    p {
+      font-size: 18px;
+    }
+
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      width: 100px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #feedback {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .salah {
+      color: red;
+    }
+
+    .benar {
+      color: green;
+    }
+  </style>
+</head>
+<body><!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4KX380T5BD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4KX380T5BD');
+</script>
+
+
+
+  <h1>TEBAK SIAPA AKU</h1>
+  <p>Aku adalah bilangan dari 1 sampai 100. Hai sobat belajarku, bisakah kau menebak siapa aku?</p>
+
+  <input type="number" id="tebakan" min="1" max="100" placeholder="1 - 100">
+  <button id="tombolHasil">HASIL</button>
+
+  <div id="feedback"></div>
+
+  <script>
+    // Bilangan acak antara 1 dan 100
+    const angkaRahasia = Math.floor(Math.random() * 100) + 1;
+
+    // Saat tombol diklik
+    document.getElementById("tombolHasil").addEventListener("click", function () {
+      const input = document.getElementById("tebakan").value;
+      const tebakan = parseInt(input);
+      const feedback = document.getElementById("feedback");
+
+      if (isNaN(tebakan) || tebakan < 1 || tebakan > 100) {
+        feedback.textContent = "Masukkan angka antara 1 dan 100!";
+        feedback.className = "salah";
+        return;
+      }
+
+      if (tebakan === angkaRahasia) {
+        feedback.textContent = "🎉 Hebat! Jawaban Anda benar.";
+        feedback.className = "benar";
+      } else if (tebakan > angkaRahasia) {
+        feedback.textContent = "😕 Maaf jawabannya Anda salah, aku adalah bilangan yang lebih kecil dari yang kamu tebak. Coba lagi!";
+        feedback.className = "salah";
+      } else {
+        feedback.textContent = "😕 Maaf jawaban Anda salah, aku adalah bilangan yang lebih besar dari yang kau tebak. Coba lagi!";
+        feedback.className = "salah";
+      }
+    });
+  </script>
+
+</body>
+<!-- Hosted by www.Geocities.ws -->
+</html>
